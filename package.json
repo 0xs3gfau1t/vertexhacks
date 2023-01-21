@@ -1,21 +1,22 @@
 {
-    "name": "eSandesh",
-    "version": "1.0.0",
-    "description": "News portal",
-    "main": "server/index.js",
-    "scripts": {
-        "install": "npm install --prefix server",
-        "start": "npm run start --prefix server"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/0xs3gfau1t/news.git"
-    },
-    "keywords": ["news"],
-    "author": "SegFault",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/0xs3gfau1t/news/issues"
-    },
-    "homepage": "https://github.com/0xs3gfau1t/news#readme"
+	"name": "",
+	"version": "1.0.0",
+	"main": "server/index.js",
+	"scripts": {
+		"install": "npm install --prefix server",
+		"start": "npm run start --prefix server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/0xs3gfau1t/news.git"
+	},
+	"keywords": [
+		""
+	],
+	"author": "SegFault",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/0xs3gfau1t/news/issues"
+	},
+	"homepage": "https://github.com/0xs3gfau1t/news#readme"
 }
