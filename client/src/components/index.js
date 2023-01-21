@@ -1,4 +1,5 @@
 import { FormText } from "./FormText"
 import Logo from "./Logo"
+import PrivateRoute from "./PrivateRoute"
 
-export { FormText, Logo }
+export { FormText, Logo, PrivateRoute }

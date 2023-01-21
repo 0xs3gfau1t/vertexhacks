@@ -1,30 +1,46 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react"
+import { Link, Navigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+
+import { verifylogin } from "../redux/actions/auth"
 
 const Landing = () => {
-  return (
-    <section className="h-screen px-6 p-10 bg-indigo-100">
-      <div className="flex items-center flex-wrap mb-20">
-        <div className="w-full md:w-1/2 text-center ">
-          <h4 className="text-4xl text-gray-800 font-bold mb-3">Go where the locals go</h4>
-          <p className="text-gray-600 text-2xl mb-8">
-		  Unlock travel confidence with a local guidebook built just for you.
-          </p>
-		  <Link to="/login">
-		  <button className="bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold py-3 px-5 rounded-full">
-  			Start Your Trip
-		  </button>
-		  </Link>
-        </div>
-        <div className="w-full md:w-1/2 p-5">
-          <img src="/src/assets/new.png" alt="Tourism" />
-        </div>
-      </div>
-    </section>
-  );
-};
+	const { isAuthenticated, verifying } = useSelector(state => state.auth)
+	const dispatch = useDispatch()
+	useEffect(() => {
+		if (!isAuthenticated && !verifying) dispatch(verifylogin(false))
+	}, [isAuthenticated])
+
+	if (isAuthenticated && !verifying) {
+		return <Navigate to="/home" />
+	}
+	return (
+		<section className="h-screen px-6 p-10 bg-indigo-100">
+			<div className="flex items-center flex-wrap mb-20">
+				<div className="w-full md:w-1/2 text-center ">
+					<h4 className="text-4xl text-gray-800 font-bold mb-3">
+						Go where the locals go
+					</h4>
+					<p className="text-gray-600 text-2xl mb-8">
+						Unlock travel confidence with a local guidebook built
+						just for you.
+					</p>
+					<Link to="/login">
+						<button className="bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold py-3 px-5 rounded-full">
+							Start Your Trip
+						</button>
+					</Link>
+				</div>
+				<div className="w-full md:w-1/2 p-5">
+					<img src="/src/assets/new.png" alt="Tourism" />
+				</div>
+			</div>
+		</section>
+	)
+}
 
 {
-  /* <div className="flex mx-auto py-28 items-center gap-32 w-1/2 text-center">
+	/* <div className="flex mx-auto py-28 items-center gap-32 w-1/2 text-center">
 							<div className="flex flex-col items-start p-0 gap-8">
 								<div className="flex flex-col items-start p-0 gap-6">
 									<h1 className=" pt-8 text-4xl font-bold text-center">
@@ -62,7 +78,7 @@ const Landing = () => {
 }
 
 {
-  /* <div className="flex mx-auto my-6 items-center gap-32 w-max left-32">
+	/* <div className="flex mx-auto my-6 items-center gap-32 w-max left-32">
 						<div className="flex flex-col items-start p-0 gap-6">
 							<h1
 								id="About_us"
@@ -86,7 +102,7 @@ const Landing = () => {
 					</div> */
 }
 {
-  /* <div className="flex mx-auto my-6 items-center gap-32 w-max left-32">
+	/* <div className="flex mx-auto my-6 items-center gap-32 w-max left-32">
 						<div className="flex flex-col items-start p-0 gap-6">
 							<h1
 								id="Learn_more"
@@ -115,4 +131,4 @@ const Landing = () => {
 // 	)
 // }
 
-export default Landing;
+export default Landing

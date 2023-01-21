@@ -1,4 +1,5 @@
 import Landing from "./Landing"
 import Login from "./Login"
+import Home from "./Home"
 
-export { Landing, Login }
+export { Landing, Login, Home }

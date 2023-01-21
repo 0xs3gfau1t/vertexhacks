@@ -3,8 +3,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import { store } from "./redux/store"
 import "./App.css"
 
-import { Landing, Login } from "./pages"
-// import { PrivateRoute } from "./components/common"
+import { Landing, Login, Home } from "./pages"
+import { PrivateRoute } from "./components"
 
 function App() {
 	return (
@@ -16,6 +16,14 @@ function App() {
 					<Route
 						path="/register"
 						element={<Login register={true} />}
+					/>
+					<Route
+						path="/home"
+						element={
+							<PrivateRoute>
+								<Home />
+							</PrivateRoute>
+						}
 					/>
 				</Routes>
 			</Router>

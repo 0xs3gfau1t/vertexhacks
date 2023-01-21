@@ -46,3 +46,34 @@ export const login = createAsyncThunk(
 		return { isAuthenticated: true }
 	}
 )
+
+export const verifylogin = createAsyncThunk(
+	"auth/verfiylogin",
+	async (alert, { dispatch }) => {
+		console.log("here hehe")
+		const response = await axios
+			.get("/api/auth/verifylogin", {
+				withCredentials: true,
+			})
+			.then(res => {
+				console.log("Login okay")
+				return res.data
+			})
+			.catch(err => {
+				if (alert) {
+					dispatch(
+						setAlert(
+							err.response?.data?.error ||
+								"You must login to continue !",
+							"danger"
+						)
+					)
+				}
+				return false
+			})
+
+		if (response) return { isAuthenticated: true, user: response.user }
+
+		return { isAuthenticated: false }
+	}
+)
