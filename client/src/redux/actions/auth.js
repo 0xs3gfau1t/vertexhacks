@@ -77,3 +77,26 @@ export const verifylogin = createAsyncThunk(
 		return { isAuthenticated: false }
 	}
 )
+
+export const logout = createAsyncThunk(
+	"auth/logout",
+	async ({}, { dispatch }) => {
+		const response = await axios
+			.delete("/api/auth/logout", {
+				withCredentials: true,
+			})
+			.then(res => {
+				console.log("Logged Out!", "success")
+				// window.location.href = "/"
+				return res.data
+			})
+			.catch(err => {
+				if (alert) {
+					console.log("Something went wrong !")
+				}
+				return false
+			})
+
+		return { isAuthenticated: false }
+	}
+)

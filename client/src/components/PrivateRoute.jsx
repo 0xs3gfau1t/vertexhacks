@@ -3,6 +3,8 @@ import { Navigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { verifylogin } from "../redux/actions/auth"
 
+import NavBar from "./NavBar"
+
 const PrivateRoute = ({ children }) => {
 	const { isAuthenticated, verifying } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
@@ -20,7 +22,12 @@ const PrivateRoute = ({ children }) => {
 		return <Navigate to="/" />
 	}
 
-	return children
+	return (
+		<>
+			<NavBar />
+			{children}
+		</>
+	)
 }
 
 export default PrivateRoute

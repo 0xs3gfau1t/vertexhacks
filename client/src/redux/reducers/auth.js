@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-import { login, verifylogin } from "../actions/auth"
+import { login, verifylogin, logout } from "../actions/auth"
 
 const initialState = { verifying: false, isAuthenticated: false }
 
@@ -21,6 +21,10 @@ const authSlice = createSlice({
 		})
 		builder.addCase(verifylogin.fulfilled, (state, { payload }) => {
 			state.isAuthenticated = payload.isAuthenticated
+			state.verifying = false
+		})
+		builder.addCase(logout.fulfilled, (state, { payload }) => {
+			state.isAuthenticated = false
 			state.verifying = false
 		})
 	},

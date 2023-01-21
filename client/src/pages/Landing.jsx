@@ -8,7 +8,7 @@ const Landing = () => {
 	const { isAuthenticated, verifying } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
 	useEffect(() => {
-		if (!isAuthenticated && !verifying) dispatch(verifylogin(false))
+		if (!isAuthenticated && !verifying) dispatch(verifylogin(0))
 	}, [isAuthenticated])
 
 	if (isAuthenticated && !verifying) {

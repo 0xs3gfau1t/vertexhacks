@@ -1,9 +1,9 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Link, Navigate } from "react-router-dom"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Logo, FormText } from "../components"
-import { registerAc, login } from "../redux/actions/auth"
+import { registerAc, login, verifylogin } from "../redux/actions/auth"
 
 const initialState = {
 	username: "",
@@ -14,8 +14,16 @@ const initialState = {
 
 const Login = ({ register }) => {
 	const [values, setValues] = useState(initialState)
+	const { isAuthenticated, verifying } = useSelector(state => state.auth)
 	const dispatch = useDispatch()
 
+	useEffect(() => {
+		if (!isAuthenticated && !verifying) dispatch(verifylogin(0))
+	}, [isAuthenticated])
+
+	if (isAuthenticated && !verifying) {
+		return <Navigate to="/home" />
+	}
 	const handleChange = e => {
 		setValues({ ...values, [e.target.name]: e.target.value })
 	}
