@@ -2,7 +2,7 @@ const express = require('express')
 const bcrypt = require('bcryptjs')
 
 const { jwtSign } = require('../../utils/jwtUtil')
-const userModel = require('../../model/user')
+const userModel = require('../../model')
 
 /**
  * @param {express.Request} req
@@ -31,10 +31,7 @@ module.exports = async (req, res) => {
 
         // Now mark user login, used when generating new token after previous expiry
         // Not the best solution, but good enough atm
-        await userModel.updateOne(
-            { username },
-            { accessToken }
-        )
+        await userModel.updateOne({ username }, { accessToken })
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
@@ -45,5 +42,5 @@ module.exports = async (req, res) => {
         console.error(e)
         res.status(401).json({ message: 'No such user exists' })
     }
-    console.log("Logging", username, "in")
+    console.log('Logging', username, 'in')
 }
