@@ -23,3 +23,26 @@ export const registerAc = createAsyncThunk(
 		return { success: true, data: response }
 	}
 )
+
+export const login = createAsyncThunk(
+	"auth/login",
+	async ({ username, password1 }, { dispatch }) => {
+		console.log("val")
+		const response = await axios
+			.post(`/api/auth/login`, {
+				username: username,
+				password: password1,
+			})
+			.then(res => {
+				console.log("Logged in.")
+				return res.data
+			})
+			.catch(err => {
+				console.error(err.response)
+				console.log("Something Went Wrong ! Try again later")
+			})
+
+		if (!response) return { isAuthenticated: false }
+		return { isAuthenticated: true }
+	}
+)

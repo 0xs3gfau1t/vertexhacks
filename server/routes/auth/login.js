@@ -16,10 +16,10 @@ module.exports = async (req, res) => {
     try {
         const user = await userModel.findOne(
             { username },
-            { username: true, verified: true, password: true }
+            { username: true, password: true }
         )
         const passed = bcrypt.compareSync(password, user.password)
-
+        console.log('user', user)
         // Check password hash
         if (!passed) throw Error('Wrong credentials provided')
 
@@ -31,10 +31,7 @@ module.exports = async (req, res) => {
 
         // Now mark user login, used when generating new token after previous expiry
         // Not the best solution, but good enough atm
-        await userModel.updateOne(
-            { username },
-            { accessToken }
-        )
+        await userModel.updateOne({ username }, { accessToken })
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
@@ -45,5 +42,5 @@ module.exports = async (req, res) => {
         console.error(e)
         res.status(401).json({ message: 'No such user exists' })
     }
-    console.log("Logging", username, "in")
+    console.log('Logging', username, 'in')
 }

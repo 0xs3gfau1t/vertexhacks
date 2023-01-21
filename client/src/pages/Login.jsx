@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 import { useDispatch } from "react-redux"
 import { Logo, FormText } from "../components"
-import { registerAc } from "../redux/actions/auth"
+import { registerAc, login } from "../redux/actions/auth"
 
 const initialState = {
 	username: "",
@@ -22,8 +22,7 @@ const Login = ({ register }) => {
 
 	const onSubmit = e => {
 		e.preventDefault()
-		console.log("val", register)
-		let { email, password1, password2, name } = values
+		let { email, password1, password2, username } = values
 
 		if (register && password1 !== password2) {
 			console.log("Password didn't match.")
@@ -33,7 +32,7 @@ const Login = ({ register }) => {
 			dispatch(registerAc(values))
 			return
 		}
-		console.log("Login")
+		dispatch(login(values))
 	}
 	return (
 		<div className="center-xy p-6 md:p-0">
@@ -47,18 +46,18 @@ const Login = ({ register }) => {
 				<form onSubmit={onSubmit} className="flex flex-col mx-4 mt-4">
 					{register && (
 						<FormText
-							name="username"
-							type="text"
-							labelText="Full Name"
-							value={values.name}
+							type={"email"}
+							name={"email"}
+							value={values.email}
+							labelText={"Email"}
 							handleChange={handleChange}
 						/>
 					)}
 					<FormText
-						type={"email"}
-						name={"email"}
-						value={values.email}
-						labelText={"Email"}
+						name="username"
+						type="text"
+						labelText="Username"
+						value={values.name}
 						handleChange={handleChange}
 					/>
 
