@@ -1,9 +1,3 @@
-# NEWS PORTAL
-
-## Dependencies
-
--   node: v18+
-
 ## How to run
 
 ### Using docker
