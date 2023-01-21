@@ -3,7 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import { store } from "./redux/store"
 import "./App.css"
 
-import { Landing, Login, Home } from "./pages"
+import { Landing, Login, Home, Guide } from "./pages"
 import { PrivateRoute } from "./components"
 
 function App() {
@@ -22,6 +22,14 @@ function App() {
 						element={
 							<PrivateRoute>
 								<Home />
+							</PrivateRoute>
+						}
+					/>
+					<Route
+						path="/guide"
+						element={
+							<PrivateRoute>
+								<Guide />
 							</PrivateRoute>
 						}
 					/>

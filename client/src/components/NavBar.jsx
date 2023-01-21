@@ -1,8 +1,8 @@
 import { useState, useRef } from "react"
 import { useDispatch } from "react-redux"
 import { NavLink, Link } from "react-router-dom"
-import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai"
-import { GiStairsGoal } from "react-icons/gi"
+import { AiFillCaretDown, AiFillHome } from "react-icons/ai"
+import { MdEmojiPeople } from "react-icons/md"
 import { CgFeed } from "react-icons/cg"
 
 import { Logo } from "../components"
@@ -21,7 +21,28 @@ const NavBar = () => {
 			<div className="w-4/5 lg:1/3">
 				<Logo small={true} />
 			</div>
-
+			<div className="flex gap-8 w-1/2 lg:1/3 p-2 text-4xl lg:text-4xl">
+				<NavLink
+					className={({ isActive }) =>
+						isActive
+							? "border-rose-700 border-b-2 px-2 rounded-b"
+							: "px-2"
+					}
+					to="/home"
+				>
+					<AiFillHome />
+				</NavLink>
+				<NavLink
+					className={({ isActive }) =>
+						isActive
+							? "border-rose-700 border-b-2 px-2 rounded-b"
+							: "px-2"
+					}
+					to="/guide"
+				>
+					<MdEmojiPeople />
+				</NavLink>
+			</div>
 			<div className="flex gap-8 w-1/5 my-auto pr-4 ml-24">
 				<AiFillCaretDown
 					className={`${
