@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
+import { useDispatch } from "react-redux"
 import { Logo, FormText } from "../components"
+import { registerAc } from "../redux/actions/auth"
 
 const initialState = {
-	name: "",
+	username: "",
 	email: "",
 	password1: "",
 	password2: "",
@@ -12,6 +14,7 @@ const initialState = {
 
 const Login = ({ register }) => {
 	const [values, setValues] = useState(initialState)
+	const dispatch = useDispatch()
 
 	const handleChange = e => {
 		setValues({ ...values, [e.target.name]: e.target.value })
@@ -19,16 +22,17 @@ const Login = ({ register }) => {
 
 	const onSubmit = e => {
 		e.preventDefault()
+		console.log("val", register)
 		let { email, password1, password2, name } = values
-		if (!email || !password1 || !(!register || (password2 && name))) {
-			console.log("One or more field missing!!", "danger")
-			return
-		}
+
 		if (register && password1 !== password2) {
 			console.log("Password didn't match.")
 			return
 		}
-		if (register) console.log("Registered")
+		if (register) {
+			dispatch(registerAc(values))
+			return
+		}
 		console.log("Login")
 	}
 	return (
@@ -43,7 +47,7 @@ const Login = ({ register }) => {
 				<form onSubmit={onSubmit} className="flex flex-col mx-4 mt-4">
 					{register && (
 						<FormText
-							name="name"
+							name="username"
 							type="text"
 							labelText="Full Name"
 							value={values.name}
