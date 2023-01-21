@@ -1,0 +1,140 @@
+.form {
+	@apply mx-auto flex min-w-fit flex-col rounded-lg px-12 py-4;
+	border: 1px solid red;
+	border-top: 7px solid #101935;
+	transition: var(--transition);
+}
+
+body {
+	@apply text-lg;
+	/* @apply lg:text-xl; */
+}
+button {
+	height: 51px;
+	font-size: 16px;
+	line-height: 110%;
+	padding: 1px 12px !important;
+	border-radius: 7px;
+	border: 0px;
+	font-weight: 700 !important;
+	cursor: pointer;
+}
+
+.header {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.container {
+	/* max-width: 1200px; */
+	margin-left: auto;
+	margin-right: auto;
+}
+.dash-list li {
+	@apply py-2 px-7 inline-flex gap-4;
+}
+.dash-list li:hover {
+	opacity: 0.7;
+}
+.dash-list li svg {
+	font-size: 1.5rem;
+	color: white;
+}
+.active {
+	@apply bg-sky-500;
+}
+
+.ql-container {
+	min-height: 70vh;
+	height: 100%;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.ql-editor {
+	height: 100%;
+	flex: 1;
+	overflow-y: auto;
+	width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-primary leading-loose;
+}
+
+.newsListTable td {
+	@apply text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap;
+}
+
+.newsListTable th {
+	@apply text-sm font-medium text-gray-900 px-6 py-4 text-left;
+}
+
+.news-content img {
+	@apply mb-5;
+}
+
+.addNew {
+	@apply text-white flex gap-4 my-4 mx-auto w-2/4 text-2xl bg-green-700 py-2 px-4 rounded justify-center cursor-pointer;
+}
+.addNew svg {
+	@apply mt-[8px];
+}
+
+.activeSideNav {
+	@apply text-darkblue font-bold text-xl pl-4 border-l-4 border-l-rose-700 transition-all duration-300;
+}
+
+.social-share {
+	width: 2.4rem;
+}
+
+.poll-button {
+	background: linear-gradient(-45deg, #d31818e7, #d31818e7, #1d3557, #1d3557);
+	background-size: 900% 900%;
+	animation: jhilimili 0.8s infinite;
+}
+
+@keyframes jhilimili {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/* .header-drop {
+	@apply bg-gray-400;
+	opacity: 1;
+	animation: bistarai 0.8s;
+} */
+
+.header-drop {
+	/* @apply bg-gray-100; */
+	@apply bg-white;
+	opacity: 1;
+	top: -75px;
+	animation: bistarai 0.3s;
+}
+.header-drop li {
+	@apply cursor-pointer my-1 hover:bg-blue rounded-sm py-2 duration-200 hover:text-white;
+}
+@keyframes bistarai {
+	0% {
+		opacity: 0;
+		top: -100px;
+	}
+	100% {
+		opacity: 1;
+		top: -75px;
+	}
+}
