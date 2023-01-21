@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 import { store } from "./redux/store"
 import "./App.css"
 
-import { Landing } from "./pages"
+import { Landing, Login } from "./pages"
 // import { PrivateRoute } from "./components/common"
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path="/" element={<Landing />} />
+					<Route path="/login" element={<Login />} />
 				</Routes>
 			</Router>
 		</Provider>
