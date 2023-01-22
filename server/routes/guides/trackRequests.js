@@ -1,5 +1,4 @@
 const express = require('express')
-const { emitChat } = require('./socketController')
 
 const { guide } = require('../../model')
 
