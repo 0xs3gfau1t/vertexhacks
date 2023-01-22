@@ -1,10 +1,10 @@
 import { MdFilterAlt } from "react-icons/md"
 
-import { DestCard } from "../components"
+import { GuideCard } from "../components"
 
 const Guide = () => {
 	return (
-		<div className="flex flex-col gap-4">
+		<div className="flex flex-col gap-4 mx-auto w-fit">
 			<h1 className="text-xl text-center">
 				Hire a guide to assist your adventure.
 			</h1>
@@ -18,9 +18,14 @@ const Guide = () => {
 					className="border-2 border-slate-500 rounded-md px-2"
 				/>
 			</div>
-			<DestCard
-				image={"https://vectorified.com/images/avatar-icon-png-15.png"}
-			/>
+			<div className="flex gap-4">
+				<GuideCard />
+				<GuideCard />
+			</div>
+			<div className="flex gap-4">
+				<GuideCard />
+				<GuideCard />
+			</div>
 		</div>
 	)
 }
