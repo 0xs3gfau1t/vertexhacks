@@ -17,7 +17,10 @@ module.exports = async (req, res) => {
         const data = jwtVerify(token)
         if (data) {
             // Update jwt and database to verified
-            await userModel.updateOne({username: data.username}, {verified: true})
+            await userModel.updateOne(
+                { username: data.username },
+                { verified: true }
+            )
             return res.status(302).send(`
                 <style>
                     html{
@@ -32,7 +35,6 @@ module.exports = async (req, res) => {
                     }, 2000);
                     </script>
             `)
-
         }
         res.status(401).status({ message: 'Invalid token' })
     } catch (e) {

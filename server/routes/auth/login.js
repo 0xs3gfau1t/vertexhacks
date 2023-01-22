@@ -16,10 +16,10 @@ module.exports = async (req, res) => {
     try {
         const user = await userModel.findOne(
             { username },
-            { username: true, verified: true, password: true }
+            { username: true, password: true }
         )
         const passed = bcrypt.compareSync(password, user.password)
-
+        console.log('user', user)
         // Check password hash
         if (!passed) throw Error('Wrong credentials provided')
 

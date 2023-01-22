@@ -5,7 +5,6 @@ require('./config/db')()
 
 const { app, server } = require('./config/app')
 
-
 app.use('/api', require('./routes'))
 
 app.get('/', (_req, res) => {
