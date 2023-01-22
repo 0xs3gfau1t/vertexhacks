@@ -21,6 +21,7 @@ const userSchema = mongoose.Schema(
     },
     { timeStamps: true }
 )
+
 const touristSchema = mongoose.Schema(
     {
         username: { type: String, ref: 'User' },
@@ -29,7 +30,12 @@ const touristSchema = mongoose.Schema(
         booked: {
             type: [mongoose.Schema.Types.ObjectId],
             default: [],
-            ref: 'Homestay',
+            ref: 'Booked',
+        },
+        booking: {
+            type: [mongoose.Schema.Types.ObjectId],
+            default: [],
+            ref: 'Booked',
         },
         guides: { type: [String], ref: 'Guide' },
         activeGuides: { type: [] },
@@ -45,7 +51,11 @@ const guideSchema = mongoose.Schema(
         avgStars: { type: Number, default: 0 },
         booked: { type: [mongoose.Schema.Types.ObjectId], ref: 'BookedGuide' },
         points: { type: Number, default: 0 },
-        activeRequests: { type: [String] /*Tourist username*/ },
+        activeRequests: {
+            type: [
+                { touristId: String, source: String, destination: String },
+            ] /*Tourist username*/,
+        },
     },
     { timeStamps: true }
 )

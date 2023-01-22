@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { guide } = require('../../model')
+const { tourist } = require('../../model')
 
 /**
  *
@@ -11,14 +11,14 @@ const { guide } = require('../../model')
 
 module.exports = async (req, res) => {
     try {
-        const requestedTourists = guide.findOne(
+        const updatedResponse = await tourist.findOne(
             { username: req.user.username },
-            { activeRequests: true }
+            { booking: true }
         )
 
-        res.json({ requestedDetails: requestedTourists })
+        return res.json({ inProgress: updatedResponse })
     } catch (e) {
         console.error(e)
-        res.status(500).json({ message: 'Something went wrong.' })
+        return res.json({ message: 'Something went wrong' })
     }
 }

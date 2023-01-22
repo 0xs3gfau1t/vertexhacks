@@ -33,8 +33,4 @@ const io = require('socket.io')(server, {
     path: '/sock/',
 })
 
-io.on('connection', sock => {
-    console.log('Connected to socket')
-})
-
 module.exports = { app, server, io }
