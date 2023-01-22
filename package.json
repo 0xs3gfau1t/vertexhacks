@@ -8,18 +8,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/0xs3gfau1t/news.git"
+		"url": "git+https://github.com/0xs3gfau1t/vertex.git"
 	},
 	"keywords": [
 		""
 	],
 	"author": "SegFault",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/0xs3gfau1t/news/issues"
-	},
-	"homepage": "https://github.com/0xs3gfau1t/news#readme",
-	"dependencies": {
-		"socket.io-client": "^4.5.4"
-	}
+	"license": "ISC"
 }
