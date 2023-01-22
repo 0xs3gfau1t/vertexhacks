@@ -4,5 +4,6 @@ import PrivateRoute from "./PrivateRoute"
 import NavBar from "./NavBar"
 import DestCard from "./DestCard"
 import Popup from "./Popup"
+import Alert from "./Alert"
 
-export { FormText, Logo, PrivateRoute, NavBar, DestCard, Popup }
+export { FormText, Logo, PrivateRoute, NavBar, DestCard, Popup, Alert }

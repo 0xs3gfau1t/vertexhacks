@@ -1,17 +1,28 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 import { MdFilterAlt } from "react-icons/md"
 
 import { DestCard, Popup } from "../components"
+import { bookHomeStay } from "../redux/actions/homestay"
 
 const Home = () => {
 	const [confirm, setConfirm] = useState(false)
+	const dispatch = useDispatch()
+
+	const handleConfirm = e => {
+		dispatch(bookHomeStay(0))
+		setConfirm(false)
+	}
 
 	return (
 		<div className="flex flex-col mx-auto w-fit gap-4">
 			{confirm && (
 				<Popup title={"Confirm your booking?"} setShow={setConfirm}>
 					<div className="flex gap-8">
-						<button className="button bg-green-600 text-white">
+						<button
+							className="button bg-green-600 text-white"
+							onClick={handleConfirm}
+						>
 							Yes
 						</button>
 						<button
