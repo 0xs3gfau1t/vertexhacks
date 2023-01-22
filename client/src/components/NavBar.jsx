@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Link } from "react-router-dom"
 import { AiFillCaretDown, AiFillHome } from "react-icons/ai"
 import { MdEmojiPeople, MdNotifications } from "react-icons/md"
@@ -9,6 +9,7 @@ import { Logo } from "../components"
 import { logout } from "../redux/actions/auth"
 
 const NavBar = () => {
+	const auth = useSelector(state => state.auth)
 	const [show, setShow] = useState(false)
 	const dispatch = useDispatch()
 	const ref = useRef(null)
@@ -22,36 +23,40 @@ const NavBar = () => {
 				<Logo small={true} />
 			</div>
 			<div className="flex gap-8 w-1/2 lg:1/3 p-2 text-4xl lg:text-4xl">
-				<NavLink
-					className={({ isActive }) =>
-						isActive
-							? "border-rose-700 border-b-2 px-2 rounded-b"
-							: "px-2"
-					}
-					to="/home"
-				>
-					<AiFillHome />
-				</NavLink>
-				<NavLink
-					className={({ isActive }) =>
-						isActive
-							? "border-rose-700 border-b-2 px-2 rounded-b"
-							: "px-2"
-					}
-					to="/guide"
-				>
-					<MdEmojiPeople />
-				</NavLink>
-				<NavLink
-					className={({ isActive }) =>
-						isActive
-							? "border-rose-700 border-b-2 px-2 rounded-b"
-							: "px-2"
-					}
-					to="/contribute"
-				>
-					<FaHandsHelping />
-				</NavLink>
+				{auth.user == "tourist" && (
+					<>
+						<NavLink
+							className={({ isActive }) =>
+								isActive
+									? "border-rose-700 border-b-2 px-2 rounded-b"
+									: "px-2"
+							}
+							to="/home"
+						>
+							<AiFillHome />
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive
+									? "border-rose-700 border-b-2 px-2 rounded-b"
+									: "px-2"
+							}
+							to="/guide"
+						>
+							<MdEmojiPeople />
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive
+									? "border-rose-700 border-b-2 px-2 rounded-b"
+									: "px-2"
+							}
+							to="/contribute"
+						>
+							<FaHandsHelping />
+						</NavLink>
+					</>
+				)}
 			</div>
 			<div className="flex gap-8 w-1/5 my-auto pr-4 ml-24">
 				<MdNotifications className="text-xl lg:text-2xl transition-all cursor-pointer" />

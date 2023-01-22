@@ -1,6 +1,6 @@
 import { FaStarHalfAlt, FaStar } from "react-icons/fa"
 
-const GuideCard = () => {
+const GuideCard = ({ setFunc }) => {
 	return (
 		<div className="flex justify-center border-2 rounded-lg">
 			<div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">

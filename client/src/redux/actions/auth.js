@@ -47,7 +47,8 @@ export const login = createAsyncThunk(
 			dispatch(connect())
 
 		if (!response) return { isAuthenticated: false }
-		return { isAuthenticated: true }
+		console.log("llo", response)
+		return { isAuthenticated: true, user: response.role }
 	}
 )
 

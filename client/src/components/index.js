@@ -6,6 +6,7 @@ import DestCard from "./DestCard"
 import GuideCard from "./GuideCard"
 import Popup from "./Popup"
 import Alert from "./Alert"
+import HomeDetail from "./HomeDetail"
 
 export {
 	FormText,
@@ -16,4 +17,5 @@ export {
 	Popup,
 	Alert,
 	GuideCard,
+	HomeDetail,
 }

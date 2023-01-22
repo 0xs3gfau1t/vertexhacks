@@ -1,13 +1,14 @@
 import { FaStarHalfAlt, FaStar } from "react-icons/fa"
 
-const DestCard = ({ image, setFunc, title = "Title" }) => {
+const DestCard = ({ image, setFunc, setdet, title = "Title" }) => {
 	return (
 		<div className="flex justify-center border-2 rounded-lg">
 			<div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
 				<img
-					className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+					className="cursor-pointer w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
 					src={image}
 					alt=""
+					onClick={e => setdet(true)}
 				/>
 				<div className="p-6 flex flex-col justify-start gap-1">
 					<h5 className="text-gray-900 text-xl font-medium mb-2">
