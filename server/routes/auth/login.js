@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     try {
         const user = await userModel.findOne(
             { username },
-            { username: true, password: true }
+            { username: true, verified: true, password: true, role: true }
         )
         const passed = bcrypt.compareSync(password, user.password)
         console.log('user', user)
@@ -27,6 +27,7 @@ module.exports = async (req, res) => {
         const accessToken = jwtSign({
             username: user.username,
             verified: user.verified,
+            role: user.role,
         })
 
         // Now mark user login, used when generating new token after previous expiry
