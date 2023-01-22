@@ -1,9 +1,13 @@
 const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '.env') })
+const { io } = require('./config/app')
 
 require('./config/db')()
 
 const { app, server } = require('./config/app')
+
+const { connectionHandler } = require('./routes/guides/socketController')
+io.on('connection', connectionHandler)
 
 app.use('/api', require('./routes'))
 

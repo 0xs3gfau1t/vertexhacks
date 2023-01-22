@@ -2,6 +2,7 @@ const express = require('express')
 const { emitChat } = require('./socketController')
 
 const { guide, tourist } = require('../../model')
+const sendSms = require('../../utils/sendSms')
 
 /**
  *
@@ -11,17 +12,17 @@ const { guide, tourist } = require('../../model')
  */
 
 module.exports = async (req, res) => {
-    const { guides } = req.params // Array of usernames
+    const { guides, source, destination } = req.params // Array of usernames
 
     try {
-        //
-        // Send sms
-        // Wait for socket connection
-        //
-
         // Update requests
         guides.forEach(async guide => {
             try {
+                await sendSms(
+                    guide.phoneNo,
+                    `Hire request for ${source} --> ${destination})`
+                )
+
                 await guide.findOneAndUpdate(
                     { username: guide.username },
                     { $push: { activeRequests: req.user.username } }

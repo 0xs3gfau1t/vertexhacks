@@ -13,9 +13,12 @@ module.exports = async (req, res) => {
     const { source, destination } = req.params
 
     try {
-        const guides = await guide.find({
-            routes: { $elemMatch: { source, destination } },
-        })
+        const guides = await guide.find(
+            {
+                routes: { $elemMatch: { source, destination } },
+            },
+            { phoneNo: true, avgStars: true }
+        )
         return res.json({ guides })
     } catch (e) {
         console.error(e)
