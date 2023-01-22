@@ -20,7 +20,7 @@ export const registerAc = createAsyncThunk(
 			.catch(err => {
 				console.error(err.response.data.error)
 			})
-		console.log("here", response)
+
 		if (!response) return { success: false }
 		return { success: true, data: response }
 	}
@@ -75,6 +75,9 @@ export const verifylogin = createAsyncThunk(
 				return false
 			})
 
+		// if (response.role === "tourist" || response.role === "guide")
+		dispatch(connect())
+		// console.log(response)
 		if (response) return { isAuthenticated: true, user: response.user }
 
 		return { isAuthenticated: false }

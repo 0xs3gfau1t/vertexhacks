@@ -8,7 +8,6 @@ const { userModel } = require('../../model')
  */
 
 module.exports = async (req, res) => {
-    console.log('Hya pugyo')
     try {
         await userModel.updateOne(
             { username: req.user.username },
