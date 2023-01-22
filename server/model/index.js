@@ -10,8 +10,8 @@ const userSchema = mongoose.Schema(
         },
         accessToken: { type: String, default: null },
         verified: { type: Boolean, default: false },
-        dob: { type: Date, required: true },
-        gender: { type: String, required: true },
+        dob: { type: Date },
+        gender: { type: String },
         photo: {
             type: String,
             default: 'https://thispersondoesnotexist.com/image',
@@ -121,7 +121,6 @@ const place = mongoose.model('Place', placesSchema)
 const reviewGuide = mongoose.model('ReviewGuide', reviewGuideSchema)
 const bookedGuide = mongoose.model('BookedGuide', bookedGuideSchema)
 
-module.exports = user
 module.exports = {
     tourist,
     guide,
@@ -131,4 +130,5 @@ module.exports = {
     place,
     reviewGuide,
     bookedGuide,
+    userModel: user,
 }
