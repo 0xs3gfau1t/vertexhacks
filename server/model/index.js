@@ -16,6 +16,7 @@ const userSchema = mongoose.Schema(
             type: String,
             default: 'https://thispersondoesnotexist.com/image',
         },
+        role: { type: String, required: true }, // tourist, owner, guide
     },
     { timeStamps: true }
 )
