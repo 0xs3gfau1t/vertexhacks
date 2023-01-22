@@ -13,7 +13,7 @@ const NavBar = () => {
 	const dispatch = useDispatch()
 	const ref = useRef(null)
 	const handleLogout = e => {
-		console.log("CLicked")
+		console.log("Clicked")
 		dispatch(logout(0))
 	}
 	return (
