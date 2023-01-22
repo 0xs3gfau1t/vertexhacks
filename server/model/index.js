@@ -16,6 +16,7 @@ const userSchema = mongoose.Schema(
             type: String,
             default: 'https://thispersondoesnotexist.com/image',
         },
+        phoneNo: { type: String, default: '0000000000' },
         role: { type: String, required: true }, // tourist, owner, guide
     },
     { timeStamps: true }
@@ -30,7 +31,8 @@ const touristSchema = mongoose.Schema(
             default: [],
             ref: 'Homestay',
         },
-        guides: { type: [mongoose.Schema.Types.ObjectId], ref: 'Guide' },
+        guides: { type: [String], ref: 'Guide' },
+        activeGuides: { type: [] },
     },
     { timeStamps: true }
 )
@@ -43,6 +45,7 @@ const guideSchema = mongoose.Schema(
         avgStars: { type: Number, default: 0 },
         booked: { type: [mongoose.Schema.Types.ObjectId], ref: 'BookedGuide' },
         points: { type: Number, default: 0 },
+        activeRequests: { type: [String] /*Tourist username*/ },
     },
     { timeStamps: true }
 )
