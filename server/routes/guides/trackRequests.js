@@ -1,7 +1,9 @@
 const express = require('express')
-const { userModel } = require('../../model')
+
+const { guide } = require('../../model')
 
 /**
+ *
  * @param {express.Request} req
  * @param {express.Response} res
  * @return {void}
@@ -9,17 +11,14 @@ const { userModel } = require('../../model')
 
 module.exports = async (req, res) => {
     try {
-        await userModel.updateOne(
+        const requestedTourists = guide.findOne(
             { username: req.user.username },
-            { accessToken: null }
+            { activeRequests: true }
         )
-        res.clearCookie('accessToken').json({
-            message: 'Log Out Successful',
-        })
+
+        res.json({ requestedDetails: requestedTourists })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         res.status(500).json({ message: 'Something went wrong.' })
     }
-
-    console.log('Logging out: ', req.user.username)
 }

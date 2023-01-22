@@ -1,7 +1,7 @@
 const express = require('express')
 
 const { jwtVerify, jwtSign } = require('../utils/jwtUtil')
-const userModel = require('../model')
+const { userModel } = require('../model')
 
 /**
  * @param {express.Request} req

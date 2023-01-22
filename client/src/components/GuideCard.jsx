@@ -1,18 +1,19 @@
 import { FaStarHalfAlt, FaStar } from "react-icons/fa"
 
-const DestCard = ({ image, setFunc, setdet, title = "Title" }) => {
+const GuideCard = ({ setFunc }) => {
 	return (
 		<div className="flex justify-center border-2 rounded-lg">
 			<div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
 				<img
-					className="cursor-pointer w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
-					src={image}
+					className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+					src={
+						"https://vectorified.com/images/avatar-icon-png-15.png"
+					}
 					alt=""
-					onClick={e => setdet(true)}
 				/>
 				<div className="p-6 flex flex-col justify-start gap-1">
 					<h5 className="text-gray-900 text-xl font-medium mb-2">
-						{title}
+						Guide Ko naam
 					</h5>
 					<p className="text-gray-700 text-base mb-4">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -20,8 +21,8 @@ const DestCard = ({ image, setFunc, setdet, title = "Title" }) => {
 						magna aliqua.
 					</p>
 					<div className="flex gap-4">
-						<span>* Rs.300/night</span>
-						<span>* 3 rooms available</span>
+						<span>* 25y/M</span>
+						<span>* English,Spanish</span>
 					</div>
 					<div className="text-gray-600 text-xs flex flex-col gap-4">
 						<div className="flex text-yellow-500 text-lg">
@@ -35,7 +36,7 @@ const DestCard = ({ image, setFunc, setdet, title = "Title" }) => {
 							className="button w-fit mx-auto bg-blue-700 text-white"
 							onClick={e => setFunc(true)}
 						>
-							Book Now
+							Place a bid
 						</button>
 					</div>
 				</div>
@@ -44,4 +45,4 @@ const DestCard = ({ image, setFunc, setdet, title = "Title" }) => {
 	)
 }
 
-export default DestCard
+export default GuideCard

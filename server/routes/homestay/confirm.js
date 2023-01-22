@@ -1,6 +1,7 @@
 const express = require('express')
 
 const { homestay } = require('../../model')
+const sendSms = require('../../utils/sendSms')
 
 /**
  *
@@ -9,17 +10,23 @@ const { homestay } = require('../../model')
  * @return {void}
  */
 
-module.exports = (req, res) => {
-    const {homestayId, touristId} = req.body
+module.exports = async (req, res) => {
+    const { homestayId } = req.body
+    const selectedHomestay = await homestay.findOne({ _id: homestayId })
 
-    // Send sms
-    console.log("Sending sms")
+    try {
+        // Send sms
+        await sendSms(
+            selectedHomestay.phoneNo,
+            'Date Range: 2023/01/25 - 2023/01/30, Total Guests: 3,' +
+                homestayId +
+                ',' +
+                req.user.username
+        )
+    } catch (e) {
+        console.error(e)
+        return res.status(500).json({ message: 'Something went wrong' })
+    }
 
-    //
-    // Initiate socket connection
-    // to listen to server poke after receiving sms reply
-    //
-    
-
-    res.json({message: 'success'})
+    res.json({ message: 'success' })
 }

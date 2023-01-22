@@ -14,7 +14,9 @@ const initialState = {
 
 const Login = ({ register }) => {
 	const [values, setValues] = useState(initialState)
-	const { isAuthenticated, verifying } = useSelector(state => state.auth)
+	const { isAuthenticated, verifying, user } = useSelector(
+		state => state.auth
+	)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -22,7 +24,7 @@ const Login = ({ register }) => {
 	}, [isAuthenticated])
 
 	if (isAuthenticated && !verifying) {
-		return <Navigate to="/home" />
+		return <Navigate to={user === "tourist" ? "/home" : "/meguide"} />
 	}
 	const handleChange = e => {
 		setValues({ ...values, [e.target.name]: e.target.value })
@@ -44,7 +46,7 @@ const Login = ({ register }) => {
 	}
 	return (
 		<div className="center-xy p-6 md:p-0">
-			<div className="box1">
+			<div className="box1 bg-gray-600 text-white">
 				<div className="flex flex-col ml-4 md:gap-2">
 					<Logo small={false} full={true} />
 					<h1 className="text-2xl md:text-3xl font-bold text-center py-2">
