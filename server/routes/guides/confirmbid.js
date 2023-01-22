@@ -10,22 +10,23 @@ const { guide, tourist } = require('../../model')
  */
 
 module.exports = async (req, res) => {
-    const { username } = req.params
+    const { username } = req.body // Username of guide
 
     try {
         const me = await tourist.findOne(
             { username: req.user.username },
             { id: true }
         )
+
         const theGuide = await guide.findOne({ username })
-        theGuide.booked.push(me.id)
+        theGuide.booked.push(req.user.username)
         await theGuide.save()
 
-        await me.booked.push(theGuide.id)
+        await me.booked.push(username)
         await me.save()
 
         //
-        // Disconnect fro sockerio
+        // Disconnect fro socketio
         //
 
         return res.json({ message: 'Success' })

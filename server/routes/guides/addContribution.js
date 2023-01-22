@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
             { $inc: { points: 1 } }
         )
 
-        const photoUrls = [] // Process, upload then returl raw urls to those photos
+        const photoUrls = photos.map(photo => {}) // Process, upload then returl raw urls to those photos
 
         const newPlace = new place({
             name,

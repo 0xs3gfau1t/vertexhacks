@@ -25,4 +25,12 @@ app.use(require('cookie-parser')())
 
 const server = require('http').createServer(app)
 
-module.exports = { app, server }
+const io = require('socket.io')(server, {
+    cors: {
+        origin: process.env.FRONTEND_URL,
+        credentials: true,
+    },
+    path: '/sock/',
+})
+
+module.exports = { app, server, io }

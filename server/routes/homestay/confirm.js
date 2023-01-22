@@ -10,16 +10,15 @@ const { homestay } = require('../../model')
  */
 
 module.exports = (req, res) => {
-    const {homestayId, touristId} = req.body
+    const { homestayId, touristId } = req.body
 
     // Send sms
-    console.log("Sending sms")
+    console.log('Sending sms')
 
     //
     // Initiate socket connection
     // to listen to server poke after receiving sms reply
     //
-    
 
-    res.json({message: 'success'})
+    res.json({ message: 'success' })
 }
