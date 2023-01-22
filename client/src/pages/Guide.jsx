@@ -1,36 +1,34 @@
 import { useState } from "react"
 import { MdFilterAlt } from "react-icons/md"
+import { useDispatch } from "react-redux"
 
+import { reqBid } from "../redux/reducers/bid"
 import { GuideCard, Popup } from "../components"
 
 const Guide = () => {
 	const [bid, setBid] = useState(false)
+	const dispatch = useDispatch()
 
-	const handleBid = () => {}
+	const handleBid = () => {
+		dispatch(reqBid(0))
+	}
 
 	return (
 		<div className="flex flex-col gap-4 mx-auto w-fit">
 			{bid && (
 				<Popup title={"Place a bid."} setShow={setBid}>
-					<div className="flex gap-2 leading-4">
-						<span className="text-xl">Rs.</span>
-						<input
-							type={"number"}
-							className="my-2 justify-center"
-						/>
-					</div>
-					<div className="flex gap-8 w-fit mx-auto">
+					<div className="flex gap-8">
 						<button
 							className="button bg-green-600 text-white"
 							onClick={handleBid}
 						>
-							Bid
+							Yes
 						</button>
 						<button
 							className="button  bg-red-600 text-white"
 							onClick={e => setBid(false)}
 						>
-							Cancel
+							No
 						</button>
 					</div>
 				</Popup>

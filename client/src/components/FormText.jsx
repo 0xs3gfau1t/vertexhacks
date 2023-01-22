@@ -21,7 +21,7 @@ const FormText = ({
 				name={name}
 				placeholder={placeholder}
 				onChange={handleChange}
-				className="form-input w-full py-1 px-2 rounded-md bg-gray-300 outline-none"
+				className="form-input w-full py-1 px-2 rounded-md bg-gray-800 outline-none"
 			/>
 		</div>
 	)

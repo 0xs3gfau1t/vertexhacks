@@ -28,7 +28,7 @@ const HomeDetail = () => {
 		<div className="h-full flex flex-col justify-center w-full">
 			<MapContainer
 				center={[...init.cords]}
-				zoom={13}
+				zoom={16}
 				scrollWheelZoom={false}
 			>
 				<TileLayer
