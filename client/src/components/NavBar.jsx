@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { NavLink, Link } from "react-router-dom"
 import { AiFillCaretDown, AiFillHome } from "react-icons/ai"
 import { MdEmojiPeople } from "react-icons/md"
-import { CgFeed } from "react-icons/cg"
+import { FaHandsHelping } from "react-icons/fa"
 
 import { Logo } from "../components"
 import { logout } from "../redux/actions/auth"
@@ -41,6 +41,16 @@ const NavBar = () => {
 					to="/guide"
 				>
 					<MdEmojiPeople />
+				</NavLink>
+				<NavLink
+					className={({ isActive }) =>
+						isActive
+							? "border-rose-700 border-b-2 px-2 rounded-b"
+							: "px-2"
+					}
+					to="/contribute"
+				>
+					<FaHandsHelping />
 				</NavLink>
 			</div>
 			<div className="flex gap-8 w-1/5 my-auto pr-4 ml-24">

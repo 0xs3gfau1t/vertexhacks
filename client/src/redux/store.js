@@ -14,3 +14,5 @@ export const store = configureStore({
 		return getDefaultMiddleware().concat([wsMiddleware])
 	},
 })
+
+listenSock(store)
