@@ -18,7 +18,7 @@ const DestCard = ({ image, title = "Title	" }) => {
 						sed do eiusmod tempor incididunt ut labore et dolore
 						magna aliqua.
 					</p>
-					<p className="text-gray-600 text-xs flex flex-col gap-4">
+					<div className="text-gray-600 text-xs flex flex-col gap-4">
 						<div className="flex color-yellow-500">
 							<FaStar />
 							<FaStar />
@@ -29,7 +29,7 @@ const DestCard = ({ image, title = "Title	" }) => {
 						<button className="button w-fit mx-auto bg-blue-700 text-white">
 							Book Now
 						</button>
-					</p>
+					</div>
 				</div>
 			</div>
 		</div>

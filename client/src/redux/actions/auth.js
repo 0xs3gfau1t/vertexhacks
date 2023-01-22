@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
+import { connect } from "./live"
+
 export const registerAc = createAsyncThunk(
 	"auth/register",
 	async ({ username, email, password1, password2 }, { dispatch }) => {
@@ -41,6 +43,8 @@ export const login = createAsyncThunk(
 				console.error(err.response)
 				console.log("Something Went Wrong ! Try again later")
 			})
+		if (response.role === "tourist" || response.role === "guide")
+			dispatch(connect())
 
 		if (!response) return { isAuthenticated: false }
 		return { isAuthenticated: true }
@@ -50,7 +54,6 @@ export const login = createAsyncThunk(
 export const verifylogin = createAsyncThunk(
 	"auth/verfiylogin",
 	async (alert, { dispatch }) => {
-		console.log("here hehe")
 		const response = await axios
 			.get("/api/auth/verifylogin", {
 				withCredentials: true,
@@ -96,7 +99,6 @@ export const logout = createAsyncThunk(
 				}
 				return false
 			})
-
 		return { isAuthenticated: false }
 	}
 )

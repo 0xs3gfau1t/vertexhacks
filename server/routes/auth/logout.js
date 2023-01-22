@@ -1,5 +1,5 @@
 const express = require('express')
-const userModel = require('../../model')
+const { userModel } = require('../../model')
 
 /**
  * @param {express.Request} req
@@ -18,6 +18,7 @@ module.exports = async (req, res) => {
             message: 'Log Out Successful',
         })
     } catch (e) {
+        console.log(e)
         res.status(500).json({ message: 'Something went wrong.' })
     }
 
