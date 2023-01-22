@@ -4,7 +4,9 @@ const auth = require('../../middlewares/auth')
 
 router.post('/add', auth, require('./add'))
 router.post('/confirm', auth, require('./confirm'))
-router.post('/getconfirmed', auth, require('./getConfirmed'))
+router.get('/getUpdatedResponse', auth, require('./getUpdatedResponse'))
+router.get('/updateResponse', require('./getConfirmed').updateResponse)
+router.get('/acceptResponse', auth, require('./getConfirmed').acceptResponse)
 router.get('/', auth, require('./getDetails'))
 router.get('/list', auth, require('./list'))
 

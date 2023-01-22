@@ -25,10 +25,6 @@ module.exports = async (req, res) => {
         await me.booked.push(username)
         await me.save()
 
-        //
-        // Disconnect fro socketio
-        //
-
         return res.json({ message: 'Success' })
     } catch (e) {
         console.error(e)
