@@ -10,13 +10,14 @@ const userSchema = mongoose.Schema(
         },
         accessToken: { type: String, default: null },
         verified: { type: Boolean, default: false },
-        name: { type: String, required: true },
-        dob: { type: Date, required: true },
-        gender: { type: String, required: true },
+        dob: { type: Date },
+        gender: { type: String },
         photo: {
             type: String,
             default: 'https://thispersondoesnotexist.com/image',
         },
+        phoneNo: { type: String, default: '0000000000' },
+        role: { type: String, required: true }, // tourist, owner, guide
     },
     { timeStamps: true }
 )
@@ -30,7 +31,8 @@ const touristSchema = mongoose.Schema(
             default: [],
             ref: 'Homestay',
         },
-        guides: { type: [mongoose.Schema.Types.ObjectId], ref: 'Guide' },
+        guides: { type: [String], ref: 'Guide' },
+        activeGuides: { type: [] },
     },
     { timeStamps: true }
 )
@@ -41,8 +43,9 @@ const guideSchema = mongoose.Schema(
         routes: { type: Object, default: {} },
         location: { type: String, default: null },
         avgStars: { type: Number, default: 0 },
-        booked: {type: [mongoose.Schema.Types.ObjectId], ref: 'BookedGuide'},
-        points: {type: Number, default: 0}
+        booked: { type: [mongoose.Schema.Types.ObjectId], ref: 'BookedGuide' },
+        points: { type: Number, default: 0 },
+        activeRequests: { type: [String] /*Tourist username*/ },
     },
     { timeStamps: true }
 )
@@ -118,7 +121,6 @@ const place = mongoose.model('Place', placesSchema)
 const reviewGuide = mongoose.model('ReviewGuide', reviewGuideSchema)
 const bookedGuide = mongoose.model('BookedGuide', bookedGuideSchema)
 
-module.exports = user
 module.exports = {
     tourist,
     guide,
@@ -128,4 +130,5 @@ module.exports = {
     place,
     reviewGuide,
     bookedGuide,
+    userModel: user,
 }

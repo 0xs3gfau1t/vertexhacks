@@ -7,7 +7,7 @@ import { resolve } from "path"
 export default ({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), "")
 	config({ path: resolve(__dirname, ".env") })
-	console.log(env)
+
 	return defineConfig({
 		plugins: [react()],
 		server: {
@@ -18,6 +18,9 @@ export default ({ mode }) => {
 					target: `http://${
 						process.env.BACKEND_HOST || "localhost"
 					}:${process.env.BACKEND_PORT || 4000}`,
+				},
+				"/sock": {
+					target: "http://localhost:4000",
 				},
 			},
 		},

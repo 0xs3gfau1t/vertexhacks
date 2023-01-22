@@ -2,7 +2,7 @@ const express = require('express')
 const bcrypt = require('bcryptjs')
 
 const { jwtSign } = require('../../utils/jwtUtil')
-const userModel = require('../../model')
+const { userModel } = require('../../model')
 
 /**
  * @param {express.Request} req
@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     try {
         const user = await userModel.findOne(
             { username },
-            { username: true, password: true }
+            { username: true, verified: true, password: true, role: true }
         )
         const passed = bcrypt.compareSync(password, user.password)
         console.log('user', user)
@@ -27,6 +27,7 @@ module.exports = async (req, res) => {
         const accessToken = jwtSign({
             username: user.username,
             verified: user.verified,
+            role: user.role,
         })
 
         // Now mark user login, used when generating new token after previous expiry
@@ -37,7 +38,7 @@ module.exports = async (req, res) => {
             httpOnly: true,
             sameSite: 'lax',
             secure: process.env.NODE_ENV === 'production',
-        }).json({ accessToken })
+        }).json({ token: accessToken, role: user.role })
     } catch (e) {
         console.error(e)
         res.status(401).json({ message: 'No such user exists' })

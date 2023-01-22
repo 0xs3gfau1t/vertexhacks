@@ -1,4 +1,6 @@
-const DestCard = ({ image }) => {
+import { FaStarHalfAlt, FaStar } from "react-icons/fa"
+
+const DestCard = ({ image, title = "Title	" }) => {
 	return (
 		<div className="flex justify-center">
 			<div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
@@ -9,22 +11,25 @@ const DestCard = ({ image }) => {
 				/>
 				<div className="p-6 flex flex-col justify-start">
 					<h5 className="text-gray-900 text-xl font-medium mb-2">
-						Card title
+						{title}
 					</h5>
 					<p className="text-gray-700 text-base mb-4">
-						This is a wider card with supporting text below as a
-						natural lead-in to additional content. This content is a
-						little bit longer.
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+						sed do eiusmod tempor incididunt ut labore et dolore
+						magna aliqua.
 					</p>
-					<p className="text-gray-600 text-xs flex flex-col gap-4">
-						Last updated 3 mins ago
-						<button
-							type="button"
-							class="w-1/2 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-						>
+					<div className="text-gray-600 text-xs flex flex-col gap-4">
+						<div className="flex color-yellow-500">
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStarHalfAlt />
+						</div>
+						<button className="button w-fit mx-auto bg-blue-700 text-white">
 							Book Now
 						</button>
-					</p>
+					</div>
 				</div>
 			</div>
 		</div>

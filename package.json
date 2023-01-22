@@ -18,5 +18,8 @@
 	"bugs": {
 		"url": "https://github.com/0xs3gfau1t/news/issues"
 	},
-	"homepage": "https://github.com/0xs3gfau1t/news#readme"
+	"homepage": "https://github.com/0xs3gfau1t/news#readme",
+	"dependencies": {
+		"socket.io-client": "^4.5.4"
+	}
 }
