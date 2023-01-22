@@ -11,7 +11,7 @@ const userModel = require('../../model')
  */
 
 module.exports = async (req, res) => {
-    const { username, email, password } = req.body
+    const { username, email, password, role } = req.body
 
     const salt = bcrypt.genSaltSync()
     const hashedPassword = bcrypt.hashSync(password, salt)
@@ -23,8 +23,18 @@ module.exports = async (req, res) => {
                 username,
                 password: hashedPassword,
                 email,
+                role,
             })
             await newUser.save()
+            switch (role) {
+                case 'tourist':
+                    const newTourist = tourist({ username, country })
+                    await newTourist.save()
+                    break
+                case 'guide':
+                    const newGuide = guide({ username })
+                    await newGuide.save()
+            }
             res.json({
                 message: 'Register success. Now, please verify your account.',
             })

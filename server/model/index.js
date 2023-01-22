@@ -10,13 +10,13 @@ const userSchema = mongoose.Schema(
         },
         accessToken: { type: String, default: null },
         verified: { type: Boolean, default: false },
-        name: { type: String, required: true },
         dob: { type: Date, required: true },
         gender: { type: String, required: true },
         photo: {
             type: String,
             default: 'https://thispersondoesnotexist.com/image',
         },
+        role: { type: String, required: true }, // tourist, owner, guide
     },
     { timeStamps: true }
 )
@@ -41,8 +41,8 @@ const guideSchema = mongoose.Schema(
         routes: { type: Object, default: {} },
         location: { type: String, default: null },
         avgStars: { type: Number, default: 0 },
-        booked: {type: [mongoose.Schema.Types.ObjectId], ref: 'BookedGuide'},
-        points: {type: Number, default: 0}
+        booked: { type: [mongoose.Schema.Types.ObjectId], ref: 'BookedGuide' },
+        points: { type: Number, default: 0 },
     },
     { timeStamps: true }
 )
