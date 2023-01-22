@@ -2,7 +2,7 @@ import { Provider } from "react-redux"
 import { useSelector } from "react-redux"
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 
-import { Landing, Login, Home, Guide, Contribute } from "./pages"
+import { Landing, Login, Home, Guide, Contribute, GuideView } from "./pages"
 import { PrivateRoute, Alert } from "./components"
 import "./App.css"
 
@@ -37,6 +37,14 @@ function App() {
 					element={
 						<PrivateRoute>
 							<Contribute />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path="/meguide"
+					element={
+						<PrivateRoute>
+							<GuideView />
 						</PrivateRoute>
 					}
 				/>

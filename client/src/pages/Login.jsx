@@ -14,7 +14,9 @@ const initialState = {
 
 const Login = ({ register }) => {
 	const [values, setValues] = useState(initialState)
-	const { isAuthenticated, verifying } = useSelector(state => state.auth)
+	const { isAuthenticated, verifying, user } = useSelector(
+		state => state.auth
+	)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -22,7 +24,7 @@ const Login = ({ register }) => {
 	}, [isAuthenticated])
 
 	if (isAuthenticated && !verifying) {
-		return <Navigate to="/home" />
+		return <Navigate to={user === "tourist" ? "/home" : "/meguide"} />
 	}
 	const handleChange = e => {
 		setValues({ ...values, [e.target.name]: e.target.value })

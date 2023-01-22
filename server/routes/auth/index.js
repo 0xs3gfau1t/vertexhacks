@@ -9,6 +9,7 @@ router.post('/requestverification', auth, require('./requestverification'))
 router.get('/verify', require('./verify'))
 
 router.get('/verifylogin', auth, (req, res) => {
+    //check session validity
     return res.status(200).json({ message: 'Login thik xa !' })
 })
 

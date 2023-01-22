@@ -2,11 +2,13 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { MdFilterAlt } from "react-icons/md"
 
-import { DestCard, Popup } from "../components"
+import { DestCard, Popup, HomeDetail } from "../components"
 import { bookHomeStay } from "../redux/actions/homestay"
 
 const Home = () => {
 	const [confirm, setConfirm] = useState(false)
+	const [showDetail, setDetail] = useState(false)
+
 	const dispatch = useDispatch()
 
 	const handleConfirm = e => {
@@ -34,6 +36,11 @@ const Home = () => {
 					</div>
 				</Popup>
 			)}
+			{showDetail && (
+				<Popup title={"Details"} setShow={setDetail}>
+					<HomeDetail />
+				</Popup>
+			)}
 			<h1 className="text-xl text-center">Top Home Stays for you</h1>
 			<div className="flex gap-2 mx-auto ">
 				<button className=" bg-gray-300 flex px-2 rounded-md">
@@ -51,12 +58,14 @@ const Home = () => {
 						"https://himalayanadventurenepal.com/wp-content/uploads/2018/07/homestay-nepal.jpg"
 					}
 					setFunc={setConfirm}
+					setdet={setDetail}
 				/>
 				<DestCard
 					image={
 						"https://himalayanadventurenepal.com/wp-content/uploads/2018/07/homestay-nepal.jpg"
 					}
 					setFunc={setConfirm}
+					setdet={setDetail}
 				/>
 			</div>
 			<div className="flex gap-4">
@@ -65,12 +74,14 @@ const Home = () => {
 						"https://himalayanadventurenepal.com/wp-content/uploads/2018/07/homestay-nepal.jpg"
 					}
 					setFunc={setConfirm}
+					setdet={setDetail}
 				/>
 				<DestCard
 					image={
 						"https://himalayanadventurenepal.com/wp-content/uploads/2018/07/homestay-nepal.jpg"
 					}
 					setFunc={setConfirm}
+					setdet={setDetail}
 				/>
 			</div>
 		</div>
