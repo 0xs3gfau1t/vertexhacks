@@ -4,6 +4,7 @@ const app = express()
 const path = require('path')
 
 app.use(cors())
+
 // Logger
 app.use(function (req, _res, next) {
     console.log(`-> ${req.url}\n`)

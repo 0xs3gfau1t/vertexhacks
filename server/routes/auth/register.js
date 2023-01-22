@@ -1,7 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
 
-const userModel = require('../../model/user')
+const userModel = require('../../model')
 
 /**
  * @param {express.Request} req
