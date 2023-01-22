@@ -1,3 +1,5 @@
+import { FaStarHalfAlt, FaStar } from "react-icons/fa"
+
 const DestCard = ({ image }) => {
 	return (
 		<div className="flex justify-center">
@@ -17,11 +19,14 @@ const DestCard = ({ image }) => {
 						little bit longer.
 					</p>
 					<p className="text-gray-600 text-xs flex flex-col gap-4">
-						Last updated 3 mins ago
-						<button
-							type="button"
-							class="w-1/2 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-						>
+						<div className="flex color-yellow-500">
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStar />
+							<FaStarHalfAlt />
+						</div>
+						<button className="button w-fit mx-auto bg-blue-700 text-white">
 							Book Now
 						</button>
 					</p>
