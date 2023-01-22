@@ -11,7 +11,7 @@ export function wsMiddleware() {
 	return next => action => {
 		if (action.type === "CONNECT" && !socket.connected) {
 			socket.connect()
-			console.log("Connecting to socket", socket)
+			console.log("Connecting to socket")
 		}
 		return next(action)
 	}

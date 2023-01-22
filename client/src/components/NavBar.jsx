@@ -2,7 +2,7 @@ import { useState, useRef } from "react"
 import { useDispatch } from "react-redux"
 import { NavLink, Link } from "react-router-dom"
 import { AiFillCaretDown, AiFillHome } from "react-icons/ai"
-import { MdEmojiPeople } from "react-icons/md"
+import { MdEmojiPeople, MdNotifications } from "react-icons/md"
 import { FaHandsHelping } from "react-icons/fa"
 
 import { Logo } from "../components"
@@ -13,7 +13,7 @@ const NavBar = () => {
 	const dispatch = useDispatch()
 	const ref = useRef(null)
 	const handleLogout = e => {
-		console.log("CLicked")
+		console.log("Clicked")
 		dispatch(logout(0))
 	}
 	return (
@@ -54,6 +54,7 @@ const NavBar = () => {
 				</NavLink>
 			</div>
 			<div className="flex gap-8 w-1/5 my-auto pr-4 ml-24">
+				<MdNotifications className="text-xl lg:text-2xl transition-all cursor-pointer" />
 				<AiFillCaretDown
 					className={`${
 						show ? "rotate-180" : ""

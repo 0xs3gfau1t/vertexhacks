@@ -30,3 +30,29 @@
 		top: -75px;
 	}
 }
+
+.alert-danger {
+	background: #842029;
+}
+.alert-success {
+	background: #0f5132;
+}
+
+.alert {
+	@apply text-white font-bold flex fixed md:w-1/4 min-w-fit z-[100] rounded border px-4 py-2 text-center opacity-95 drop-shadow-lg;
+	top: 6%;
+	left: 50%;
+	transform: translateX(-50%);
+	animation: alertSlide 0.2s ease-out;
+}
+
+@keyframes alertSlide {
+	0% {
+		top: 2%;
+		opacity: 0%;
+	}
+	100% {
+		top: 6%;
+		opacity: 95%;
+	}
+}
