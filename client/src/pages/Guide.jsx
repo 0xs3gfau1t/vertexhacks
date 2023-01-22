@@ -14,7 +14,10 @@ const Guide = () => {
 				<Popup title={"Place a bid."} setShow={setBid}>
 					<div className="flex gap-2 leading-4">
 						<span className="text-xl">Rs.</span>
-						<input type={"number"} className="my-2" />
+						<input
+							type={"number"}
+							className="my-2 justify-center"
+						/>
 					</div>
 					<div className="flex gap-8 w-fit mx-auto">
 						<button

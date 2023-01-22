@@ -8,7 +8,7 @@ const Popup = ({ title, children, setShow }) => {
 			<div className="flex items-center min-h-screen px-4 py-8">
 				<div className="flex px-4 mx-auto">
 					<div className="bg-gray-400 relative p-4 mx-auto border border-rose-800 rounded-md drop-shadow-3xl max-h-[95vh] overflow-auto">
-						<div className="mt-2 text-center sm:ml-4 sm:text-left w-[50vw]">
+						<div className="mt-2 text-center sm:ml-4 sm:text-left min-w-[50vw]">
 							<h4 className="text-2xl text-center mb-4 font-semibold">
 								{title}
 							</h4>

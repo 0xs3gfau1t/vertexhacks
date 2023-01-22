@@ -3,7 +3,10 @@ import { Link } from "react-router-dom"
 const Logo = ({ small }) => {
 	return (
 		<Link to={"/"}>
-			<img src={"#"} className={"h-min w-min"} />
+			<img
+				src={"/src/assets/exploreMateLogo.png"}
+				className={"h-12 w-auto"}
+			/>
 		</Link>
 	)
 }
