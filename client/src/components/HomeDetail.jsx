@@ -11,7 +11,7 @@ const icon = new Icon({
 })
 
 const init = {
-	cords: [28.258706333333333, 83.9807915],
+	cords: [28.1310692, 83.7575468],
 	fetched: false,
 }
 
@@ -25,9 +25,9 @@ const HomeDetail = () => {
 	}
 
 	return (
-		<div className="h-full flex flex-col justify-center">
+		<div className="h-full flex flex-col justify-center w-full">
 			<MapContainer
-				center={[51.505, -0.09]}
+				center={[...init.cords]}
 				zoom={13}
 				scrollWheelZoom={false}
 			>
@@ -35,9 +35,9 @@ const HomeDetail = () => {
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
-				<Marker position={[51.505, -0.09]}>
+				<Marker position={[...init.cords]}>
 					<Popup>
-						A pretty CSS3 popup. <br /> Easily customizable.
+						Sirubari Homestay <br /> Syanjya, Nepal.
 					</Popup>
 				</Marker>
 			</MapContainer>
