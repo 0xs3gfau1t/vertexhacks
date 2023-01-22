@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { homestay } = require('../../model')
+const { homestay, userModel } = require('../../model')
 const sendSms = require('../../utils/sendSms')
 
 /**
@@ -16,8 +16,12 @@ module.exports = async (req, res) => {
 
     try {
         // Send sms
+        const phoneNo = await userModel.findOne(
+            { username: selectedHomestay?.owner },
+            { phoneNo: true }
+        )
         await sendSms(
-            selectedHomestay.phoneNo,
+            phoneNo || process.env.DUMMY_PHONE_NO,
             'Date Range: 2023/01/25 - 2023/01/30, Total Guests: 3,' +
                 homestayId +
                 ',' +

@@ -4,7 +4,7 @@ const { io } = require('../../../config/app')
 const activeUsers = new Map()
 
 function connectionHandler(socket) {
-    const cookie = socket.handshake.headers.cookie
+    const cookie = socket?.handshake?.headers?.cookie
     const token = cookie?.split('accessToken=')[1]
 
     console.log(

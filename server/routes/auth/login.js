@@ -19,7 +19,6 @@ module.exports = async (req, res) => {
             { username: true, verified: true, password: true, role: true }
         )
         const passed = bcrypt.compareSync(password, user.password)
-        console.log('user', user)
         // Check password hash
         if (!passed) throw Error('Wrong credentials provided')
 
