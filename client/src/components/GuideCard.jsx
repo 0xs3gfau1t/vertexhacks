@@ -13,7 +13,7 @@ const GuideCard = ({ setFunc }) => {
 				/>
 				<div className="p-6 flex flex-col justify-start gap-1">
 					<h5 className="text-gray-900 text-xl font-medium mb-2">
-						Guide Ko naam
+                                            {['Hari', 'Ram', 'Shyam', 'Bibek','Sankhar', 'Dhurba'][Math.ceil((Math.random()*100))%5]}
 					</h5>
 					<p className="text-gray-700 text-base mb-4">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,

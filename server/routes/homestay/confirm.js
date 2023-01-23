@@ -11,15 +11,16 @@ const sendSms = require('../../utils/sendSms')
  */
 
 module.exports = async (req, res) => {
-    const { homestayId } = req.body
-    const selectedHomestay = await homestay.findOne({ _id: homestayId })
+    const { homeStayId } = req.body
+    const selectedHomestay = await homestay.findOne({ _id: homeStayId })
+    console.log(req.body)
 
     try {
         // Send sms
         await sendSms(
-            selectedHomestay.phoneNo,
+            selectedHomestay?.phoneNo || process.env.DUMMY_PHONE_NO,
             'Date Range: 2023/01/25 - 2023/01/30, Total Guests: 3,' +
-                homestayId +
+                homeStayId +
                 ',' +
                 req.user.username
         )

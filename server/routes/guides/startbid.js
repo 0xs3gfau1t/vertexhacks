@@ -2,7 +2,7 @@ const express = require('express')
 
 const { guide, tourist } = require('../../model')
 const sendSms = require('../../utils/sendSms')
-const io = require('../../config/app')
+const { io } = require('../../config/app')
 
 /**
  *
@@ -12,7 +12,7 @@ const io = require('../../config/app')
  */
 
 module.exports = async (req, res) => {
-    const { guides, source, destination } = req.params // Array of usernames
+    const { guides, source, destination } = req.body // Array of usernames
 
     try {
         // Update requests
@@ -26,8 +26,16 @@ module.exports = async (req, res) => {
                     singleGuide.username + '-bid-' + req.user.username
 
                 await guide.findOneAndUpdate(
-                    { username: guide.username },
-                    { $push: { activeRequests: socketId } }
+                    { username: singleGuide.username },
+                    {
+                        $push: {
+                            activeRequests: {
+                                touristId: socketId,
+                                source,
+                                destination,
+                            },
+                        },
+                    }
                 )
 
                 io.on('connection', socket => {

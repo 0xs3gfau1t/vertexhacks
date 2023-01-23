@@ -24,12 +24,13 @@ module.exports = async (req, res) => {
         await theGuide.save()
 
         await me.booked.push(username)
-        await me.save()
 
         io.sockets.connected.forEach(socket => {
             if (req.user.username in socket.id)
                 io.sockets.sockets[socket.id].disconnect()
         })
+        // Remove all entries from me as well
+        await me.save()
         return res.json({ message: 'Success' })
     } catch (e) {
         console.error(e)
